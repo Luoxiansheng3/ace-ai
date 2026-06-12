@@ -30,7 +30,7 @@ jobs:
       - name: Install dependencies
         run: |
           npm install --ignore-scripts
-          npm install @oxc-parser/binding-linux-x64-gnu @oxc-transform/binding-linux-x64-gnu --no-save
+          npm install @oxc-parser/binding-linux-x64-gnu @oxc-transform/binding-linux-x64-gnu @oxc-minify/binding-linux-x64-gnu --no-save
 
       - name: Build static site
         run: npx nuxt generate
