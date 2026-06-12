@@ -1,0 +1,195 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * {
+    box-sizing: border-box;
+  }
+
+  body {
+    @apply bg-dark-900 text-gray-100 font-sans antialiased;
+    overflow-x: hidden;
+  }
+
+  ::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: #0a0e17;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: #334155;
+    border-radius: 3px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: #00ff88;
+  }
+
+  ::selection {
+    background: rgba(0, 255, 136, 0.2);
+    color: #00ff88;
+  }
+}
+
+@layer components {
+  .glow-text {
+    @apply text-neon-green;
+    text-shadow: 0 0 10px rgba(0, 255, 136, 0.5), 0 0 20px rgba(0, 255, 136, 0.2);
+  }
+
+  .glow-border {
+    @apply border border-neon-green/30;
+    box-shadow: 0 0 10px rgba(0, 255, 136, 0.1), inset 0 0 10px rgba(0, 255, 136, 0.05);
+  }
+
+  .card-dark {
+    @apply bg-dark-800 border border-dark-600/50 rounded-lg;
+    transition: all 0.3s ease;
+  }
+
+  .card-dark:hover {
+    @apply border-neon-green/40;
+    box-shadow: 0 0 20px rgba(0, 255, 136, 0.1), 0 8px 32px rgba(0, 0, 0, 0.4);
+    transform: translateY(-2px);
+  }
+
+  .terminal-prompt::before {
+    content: '$ ';
+    @apply text-neon-green font-mono;
+  }
+
+  .btn-neon {
+    @apply inline-flex items-center px-6 py-3 rounded-md font-mono text-sm
+           border border-neon-green/50 text-neon-green
+           transition-all duration-300;
+  }
+
+  .btn-neon:hover {
+    @apply bg-neon-green/10;
+    box-shadow: 0 0 20px rgba(0, 255, 136, 0.3);
+  }
+
+  .tag {
+    @apply inline-block px-2 py-0.5 text-xs font-mono rounded
+           bg-neon-green/10 text-neon-green/80 border border-neon-green/20;
+  }
+
+  .prose-dark {
+    @apply text-gray-300 leading-relaxed;
+  }
+
+  .prose-dark h1, .prose-dark h2, .prose-dark h3 {
+    @apply text-white font-bold mt-8 mb-4;
+  }
+
+  .prose-dark h1 { @apply text-3xl; }
+  .prose-dark h2 { @apply text-2xl; }
+  .prose-dark h3 { @apply text-xl; }
+
+  .prose-dark p {
+    @apply mb-4;
+  }
+
+  .prose-dark a {
+    @apply text-neon-green hover:underline;
+  }
+
+  .prose-dark code {
+    @apply font-mono text-sm bg-dark-700 px-1.5 py-0.5 rounded text-neon-green;
+  }
+
+  .prose-dark pre {
+    @apply bg-dark-800 border border-dark-600 rounded-lg p-4 mb-4 overflow-x-auto;
+  }
+
+  .prose-dark pre code {
+    @apply bg-transparent p-0;
+  }
+
+  .prose-dark blockquote {
+    @apply border-l-4 border-neon-green/40 pl-4 italic text-gray-400 mb-4;
+  }
+
+  /* === List styles using flexbox (bulletproof alignment) === */
+
+  .prose-dark ul,
+  .prose-dark ol {
+    list-style: none;
+    margin-bottom: 1rem;
+    padding-left: 0;
+  }
+
+  .prose-dark ul > :not([hidden]) ~ :not([hidden]),
+  .prose-dark ol > :not([hidden]) ~ :not([hidden]) {
+    --tw-space-y-reverse: 0;
+    margin-top: calc(0.25rem * calc(1 - var(--tw-space-y-reverse)));
+    margin-bottom: calc(0.25rem * var(--tw-space-y-reverse));
+  }
+
+  .prose-dark li {
+    line-height: 1.7;
+    display: flex;
+    align-items: flex-start;
+    gap: 0.75rem;
+  }
+
+  .prose-dark ul li::before {
+    content: "•";
+    flex-shrink: 0;
+    width: 1.5rem;
+    text-align: center;
+    color: #6b7280;
+    font-weight: bold;
+    line-height: 1.7;
+  }
+
+  .prose-dark ol {
+    counter-reset: prose-ol;
+  }
+
+  .prose-dark ol li {
+    counter-increment: prose-ol;
+  }
+
+  .prose-dark ol li::before {
+    content: counter(prose-ol) ".";
+    flex-shrink: 0;
+    width: 1.5rem;
+    text-align: right;
+    color: #6b7280;
+    font-variant-numeric: tabular-nums;
+    line-height: 1.7;
+  }
+
+  .prose-dark img {
+    @apply rounded-lg my-4;
+  }
+}
+
+/* Animated background grid */
+.bg-grid {
+  background-image:
+    linear-gradient(to right, rgba(30, 41, 59, 0.3) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(30, 41, 59, 0.3) 1px, transparent 1px);
+  background-size: 50px 50px;
+}
+
+/* Terminal cursor blink */
+@keyframes cursor-blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+.cursor-blink {
+  animation: cursor-blink 1s step-end infinite;
+}
+
+/* Matrix rain effect */
+@keyframes matrix-fall {
+  0% { transform: translateY(-100vh); opacity: 1; }
+  100% { transform: translateY(100vh); opacity: 0; }
+}

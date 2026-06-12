@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="zh-CN" class="dark">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>List Alignment Test</title>
+<style>
+  /* === Tailwind base reset (simulated) === */
+  *, ::before, ::after {
+    box-sizing: border-box;
+    border-width: 0;
+    border-style: solid;
+    border-color: #e5e7eb;
+  }
+  ol, ul, menu {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  body {
+    background: #0a0a0f;
+    color: #fff;
+    font-family: 'JetBrains Mono', monospace;
+    padding: 2rem;
+  }
+
+  /* === Global prose-dark styles (matching main.css output) === */
+  .prose-dark {
+    line-height: 1.625;
+  }
+  .prose-dark ul {
+    margin-bottom: 1rem;
+    list-style-type: disc;
+  }
+  .prose-dark ul > :not([hidden]) ~ :not([hidden]) {
+    --tw-space-y-reverse: 0;
+    margin-top: calc(0.25rem * calc(1 - var(--tw-space-y-reverse)));
+    margin-bottom: calc(0.25rem * var(--tw-space-y-reverse)));
+  }
+  .prose-dark ul {
+    padding-left: 1.25rem;
+    list-style-position: outside;
+  }
+  .prose-dark ol {
+    margin-bottom: 1rem;
+    list-style-type: decimal;
+  }
+  .prose-dark ol > :not([hidden]) ~ :not([hidden]) {
+    --tw-space-y-reverse: 0;
+    margin-top: calc(0.25rem * calc(1 - var(--tw-space-y-reverse)));
+    margin-bottom: calc(0.25rem * var(--tw-space-y-reverse));
+  }
+  .prose-dark ol {
+    padding-left: 1.25rem;
+    list-style-position: outside;
+  }
+  .prose-dark li {
+    line-height: 1.7;
+  }
+  .prose-dark li::marker {
+    color: #6b7280;
+  }
+
+  /* === MarkdownEditor scoped CSS (simulated with [data-v-scope]) === */
+  .md-preview {
+    --md-text: #ffffff;
+    --md-text-muted: #9ca3af;
+    --md-text-dim: #6b7280;
+    --md-green: #00ff88;
+    --md-bg-preview: #0f0f1a;
+    --md-bg-card: #12121a;
+    --md-border: #2a2a3a;
+    background: var(--md-bg-preview);
+    border: 1px solid var(--md-border);
+    border-radius: 0.75rem;
+    overflow: hidden;
+  }
+
+  /* Scoped: .prose-dark :deep(ul), .prose-dark :deep(ol) */
+  .md-preview[data-v-scope] .prose-dark ul,
+  .md-preview[data-v-scope] .prose-dark ol {
+    margin: 0.75rem 0;
+    padding-left: 1.75rem;
+    color: #9ca3af;
+    list-style-position: outside;
+  }
+  .md-preview[data-v-scope] .prose-dark li {
+    margin: 0.35rem 0;
+    line-height: 1.7;
+  }
+  .md-preview[data-v-scope] .prose-dark ul li {
+    list-style-type: disc;
+  }
+  .md-preview[data-v-scope] .prose-dark ol li {
+    list-style-type: decimal;
+  }
+  .md-preview[data-v-scope] .prose-dark ul li::marker,
+  .md-preview[data-v-scope] .prose-dark ol li::marker {
+    color: #6b7280;
+  }
+
+  /* Preview content styles */
+  .md-preview__content {
+    padding: 1.5rem;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    line-height: 1.7;
+  }
+
+  h2 { color: #00ff88; margin: 1.25rem 0 0.75rem; font-size: 1.5rem; font-weight: 600; }
+  h3 { color: #ddd; margin: 1rem 0 0.5rem; font-size: 1.25rem; }
+  strong { color: #fff; font-weight: 700; }
+  p { color: #9ca3af; margin: 0.75rem 0; }
+  code { background: rgba(0,255,136,0.08); color: #00ff88; padding: 0.15rem 0.4rem; border-radius: 0.25rem; font-size: 0.85em; }
+</style>
+</head>
+<body>
+
+<h2 style="color:#00ff88;">Test 1: Without [data-v-scope] (blog page - global CSS only)</h2>
+<div style="background:#0f0f1a; border:1px solid #2a2a3a; border-radius:0.75rem; padding:1.5rem;">
+  <div class="prose-dark">
+    <p>完全理解你的感受。我总结了一套方法论：</p>
+    <ol>
+      <li><strong>需求发现</strong> — 从自己的痛点出发，而不是凭空想象。你自己遇到的问题，一定有其他人也会遇到。</li>
+      <li><strong>MVP 先行</strong> — 第一版永远不要完美。我在 48 小时内就发布了第一个版本，收集反馈后再迭代。</li>
+      <li><strong>技术选型</strong> — 选择你最熟悉的技术栈，不要追新。效率远比技术先进性重要。</li>
+      <li><strong>用户获取</strong> — 在 Twitter、Reddit、V2EX 等社区分享你的开发过程。Build in public 是最好的营销。</li>
+      <li><strong>定价策略</strong> — 不要免费。哪怕是 $5/月，付费用户会给你最真实的反馈。</li>
+      <li><strong>时间管理</strong> — 每天固定 2-3 小时。保持节奏比冲刺更重要。</li>
+      <li><strong>心态建设</strong> — 接受失败。大部分产品会失败，但每一次失败都是积累。</li>
+      <li><strong>社区参与</strong> — 多参与开源项目，建立个人品牌。好的声誉能带来意想不到的机会。</li>
+      <li><strong>持续学习</strong> — AI 领域变化极快，保持学习习惯。每天至少读一篇论文或技术文章。</li>
+      <li><strong>健康第一</strong> — 独立开发很容易忽视健康。设置站立提醒，定期锻炼。</li>
+    </ol>
+    <p>一些常用的技术栈：</p>
+    <ul>
+      <li><strong>Next.js</strong> — React 全栈框架，适合快速开发 SaaS 产品</li>
+      <li><strong>Nuxt 3</strong> — Vue 全栈框架，开发体验极佳</li>
+      <li><strong>Supabase</strong> — 开源 Firebase 替代品，PostgreSQL 数据库</li>
+      <li><strong>Tailwind CSS</strong> — 原子化 CSS 框架，快速构建 UI</li>
+      <li><strong>Vercel / Railway</strong> — 部署平台，零配置发布</li>
+      <li><strong>Stripe</strong> — 支付集成，支持订阅和一次性付款</li>
+      <li><strong>Resend / Loops</strong> — 邮件服务，用于营销和通知</li>
+      <li><strong>Sentry</strong> — 错误监控，及时发现线上问题</li>
+    </ul>
+  </div>
+</div>
+
+<h2 style="color:#00ff88;margin-top:3rem;">Test 2: With [data-v-scope] (MarkdownEditor inside admin)</h2>
+<div class="md-preview" data-v-scope>
+  <div class="md-preview__content prose-dark">
+    <p>完全理解你的感受。我总结了一套方法论：</p>
+    <ol>
+      <li><strong>需求发现</strong> — 从自己的痛点出发，而不是凭空想象。你自己遇到的问题，一定有其他人也会遇到。</li>
+      <li><strong>MVP 先行</strong> — 第一版永远不要完美。我在 48 小时内就发布了第一个版本，收集反馈后再迭代。</li>
+      <li><strong>技术选型</strong> — 选择你最熟悉的技术栈，不要追新。效率远比技术先进性重要。</li>
+      <li><strong>用户获取</strong> — 在 Twitter、Reddit、V2EX 等社区分享你的开发过程。Build in public 是最好的营销。</li>
+      <li><strong>定价策略</strong> — 不要免费。哪怕是 $5/月，付费用户会给你最真实的反馈。</li>
+      <li><strong>时间管理</strong> — 每天固定 2-3 小时。保持节奏比冲刺更重要。</li>
+      <li><strong>心态建设</strong> — 接受失败。大部分产品会失败，但每一次失败都是积累。</li>
+      <li><strong>社区参与</strong> — 多参与开源项目，建立个人品牌。好的声誉能带来意想不到的机会。</li>
+      <li><strong>持续学习</strong> — AI 领域变化极快，保持学习习惯。每天至少读一篇论文或技术文章。</li>
+      <li><strong>健康第一</strong> — 独立开发很容易忽视健康。设置站立提醒，定期锻炼。</li>
+    </ol>
+    <p>一些常用的技术栈：</p>
+    <ul>
+      <li><strong>Next.js</strong> — React 全栈框架，适合快速开发 SaaS 产品</li>
+      <li><strong>Nuxt 3</strong> — Vue 全栈框架，开发体验极佳</li>
+      <li><strong>Supabase</strong> — 开源 Firebase 替代品，PostgreSQL 数据库</li>
+      <li><strong>Tailwind CSS</strong> — 原子化 CSS 框架，快速构建 UI</li>
+      <li><strong>Vercel / Railway</strong> — 部署平台，零配置发布</li>
+      <li><strong>Stripe</strong> — 支付集成，支持订阅和一次性付款</li>
+      <li><strong>Resend / Loops</strong> — 邮件服务，用于营销和通知</li>
+      <li><strong>Sentry</strong> — 错误监控，及时发现线上问题</li>
+    </ul>
+  </div>
+</div>
+
+<h2 style="color:#00ff88;margin-top:3rem;">Test 3: With Tailwind list-inside vs outside (comparison)</h2>
+<div style="display:flex;gap:2rem;">
+  <div style="flex:1;background:#0f0f1a;border:1px solid #2a2a3a;border-radius:0.75rem;padding:1.5rem;">
+    <h3 style="color:red;">list-style-position: inside (WRONG)</h3>
+    <ol style="list-style-type:decimal;list-style-position:inside;padding-left:0;margin-bottom:1rem;">
+      <li style="line-height:1.7;margin:0.35rem 0;"><strong style="color:#fff;">需求发现</strong> — 从自己的痛点出发，而不是凭空想象。你自己遇到的问题，一定有其他人也会遇到。</li>
+      <li style="line-height:1.7;margin:0.35rem 0;"><strong style="color:#fff;">MVP 先行</strong> — 第一版永远不要完美。</li>
+      <li style="line-height:1.7;margin:0.35rem 0;"><strong style="color:#fff;">技术选型</strong> — 选择你最熟悉的技术栈。</li>
+    </ol>
+  </div>
+  <div style="flex:1;background:#0f0f1a;border:1px solid #2a2a3a;border-radius:0.75rem;padding:1.5rem;">
+    <h3 style="color:#00ff88;">list-style-position: outside (CORRECT)</h3>
+    <ol style="list-style-type:decimal;list-style-position:outside;padding-left:1.75rem;margin-bottom:1rem;">
+      <li style="line-height:1.7;margin:0.35rem 0;"><strong style="color:#fff;">需求发现</strong> — 从自己的痛点出发，而不是凭空想象。你自己遇到的问题，一定有其他人也会遇到。</li>
+      <li style="line-height:1.7;margin:0.35rem 0;"><strong style="color:#fff;">MVP 先行</strong> — 第一版永远不要完美。</li>
+      <li style="line-height:1.7;margin:0.35rem 0;"><strong style="color:#fff;">技术选型</strong> — 选择你最熟悉的技术栈。</li>
+    </ol>
+  </div>
+</div>
+
+<h2 style="color:#00ff88;margin-top:3rem;">Test 4: Debug - Check computed list styles</h2>
+<div id="debug-output" style="font-family:monospace;font-size:0.8rem;color:#9ca3af;padding:1rem;background:#12121a;border:1px solid #2a2a3a;border-radius:0.5rem;"></div>
+
+<script>
+// Debug: Check computed styles in Test 2
+const test2Ol = document.querySelector('.md-preview[data-v-scope] .prose-dark ol');
+const test2Li = document.querySelector('.md-preview[data-v-scope] .prose-dark ol li');
+const debugOut = document.getElementById('debug-output');
+
+if (test2Ol && test2Li) {
+  const olStyles = getComputedStyle(test2Ol);
+  const liStyles = getComputedStyle(test2Li);
+  debugOut.innerHTML = `
+    <strong style="color:#00ff88;">Test 2 (md-preview[data-v-scope]) Computed Styles:</strong><br><br>
+    &lt;ol&gt;:<br>
+    &nbsp;&nbsp;list-style-type: <span style="color:#fff">${olStyles.listStyleType}</span><br>
+    &nbsp;&nbsp;list-style-position: <span style="color:#fff">${olStyles.listStylePosition}</span><br>
+    &nbsp;&nbsp;padding-left: <span style="color:#fff">${olStyles.paddingLeft}</span><br>
+    &nbsp;&nbsp;margin: <span style="color:#fff">${olStyles.margin}</span><br><br>
+    &lt;li&gt;:<br>
+    &nbsp;&nbsp;list-style-type: <span style="color:#fff">${liStyles.listStyleType}</span><br>
+    &nbsp;&nbsp;line-height: <span style="color:#fff">${liStyles.lineHeight}</span><br>
+    &nbsp;&nbsp;display: <span style="color:#fff">${liStyles.display}</span><br>
+  `;
+
+  // Check Test 1 too
+  const test1Ol = document.querySelector('.prose-dark:not(.md-preview__content) ol');
+  const test1Styles = test1Ol ? getComputedStyle(test1Ol) : null;
+  if (test1Styles) {
+    debugOut.innerHTML += `<br><strong style="color:#38bdf8;">Test 1 (global CSS only) Computed Styles:</strong><br><br>
+    &lt;ol&gt;:<br>
+    &nbsp;&nbsp;list-style-type: <span style="color:#fff">${test1Styles.listStyleType}</span><br>
+    &nbsp;&nbsp;list-style-position: <span style="color:#fff">${test1Styles.listStylePosition}</span><br>
+    &nbsp;&nbsp;padding-left: <span style="color:#fff">${test1Styles.paddingLeft}</span><br>`;
+  }
+} else {
+  debugOut.textContent = 'Could not find test elements.';
+}
+</script>
+
+</body>
+</html>
