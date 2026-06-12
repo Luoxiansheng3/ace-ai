@@ -23,7 +23,7 @@
           <QrPopup image-src="/images/qrcodes/gongzhonghao.jpg" image-alt="公众号二维码" label="扫码关注公众号">
             <span
               class="w-5 h-5 bg-current inline-block"
-              style="-webkit-mask-image: url('/images/icons/gongzhonghao.png'); mask-image: url('/images/icons/gongzhonghao.png'); -webkit-mask-size: contain; mask-size: contain; -webkit-mask-repeat: no-repeat; mask-repeat: no-repeat; -webkit-mask-position: center; mask-position: center;"
+              :style="iconStyle"
             />
           </QrPopup>
 
@@ -56,4 +56,16 @@
 
 <script setup lang="ts">
 const siteName = 'Ace.AI'
+const baseURL = useRuntimeConfig().app.baseURL
+const gzIcon = computed(() => (baseURL + '/images/icons/gongzhonghao.png').replace(/\/\//g, '/'))
+const iconStyle = computed(() => ({
+  '-webkit-mask-image': `url('${gzIcon.value}')`,
+  'mask-image': `url('${gzIcon.value}')`,
+  '-webkit-mask-size': 'contain',
+  'mask-size': 'contain',
+  '-webkit-mask-repeat': 'no-repeat',
+  'mask-repeat': 'no-repeat',
+  '-webkit-mask-position': 'center',
+  'mask-position': 'center',
+}))
 </script>

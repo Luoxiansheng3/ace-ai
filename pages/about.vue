@@ -11,7 +11,7 @@
         <div class="sticky top-24">
           <!-- Avatar placeholder -->
           <div class="w-48 h-48 mx-auto mb-6 rounded-lg glow-border bg-dark-700 flex items-center justify-center overflow-hidden">
-            <img src="/images/avatar.png" alt="Mr.Ace" class="w-full h-full object-cover object-top" />
+            <img :src="avatarSrc" alt="Mr.Ace" class="w-full h-full object-cover object-top" />
           </div>
 
           <!-- Quick info terminal -->
@@ -94,4 +94,7 @@
 
 <script setup lang="ts">
 useHead({ title: '关于我 | Ace.AI' })
+
+const baseURL = useRuntimeConfig().app.baseURL
+const avatarSrc = computed(() => (baseURL + '/images/avatar.png').replace(/\/\//g, '/'))
 </script>

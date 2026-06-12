@@ -15,8 +15,8 @@
           <!-- Card -->
           <div class="bg-[#1a1a2e] border border-[#2a2a3a] rounded-lg shadow-xl" :class="cardClass">
             <img
-              v-if="imageSrc"
-              :src="imageSrc"
+              v-if="resolvedImage"
+              :src="resolvedImage"
               :alt="imageAlt"
               class="w-full rounded object-cover"
             />
@@ -43,6 +43,13 @@ const visible = ref(false)
 const popupRef = ref<HTMLElement>()
 const triggerRef = ref<HTMLElement>()
 const pos = ref({ left: 0, bottom: 0 })
+
+const baseURL = useRuntimeConfig().app.baseURL
+const resolvedImage = computed(() => {
+  if (!props.imageSrc) return ''
+  if (props.imageSrc.startsWith('http')) return props.imageSrc
+  return (baseURL + props.imageSrc).replace(/\/\//g, '/')
+})
 
 const popupStyle = computed(() => ({
   left: `${pos.value.left}px`,

@@ -4,7 +4,7 @@
     <div class="relative overflow-hidden rounded-md mb-4 aspect-video bg-dark-700">
       <img
         v-if="image"
-        :src="image"
+        :src="resolveImage(image)"
         :alt="title"
         class="absolute inset-0 w-full h-full object-cover"
       />
@@ -70,4 +70,12 @@ defineProps<{
   liveUrl?: string
   repoUrl?: string
 }>()
+
+const baseURL = useRuntimeConfig().app.baseURL
+
+function resolveImage(path?: string) {
+  if (!path) return ''
+  if (path.startsWith('http')) return path
+  return (baseURL + path).replace(/\/\//g, '/')
+}
 </script>
